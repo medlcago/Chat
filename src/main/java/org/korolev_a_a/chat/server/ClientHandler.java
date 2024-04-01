@@ -15,6 +15,11 @@ public class ClientHandler implements Runnable {
 
     private String nickName;
 
+    public ClientHandler(Socket clientSocket, ChatLog chatLog) {
+        this.clientSocket = clientSocket;
+        this.chatLog = chatLog;
+    }
+
     @Override
     public void run() {
         try {
@@ -37,8 +42,14 @@ public class ClientHandler implements Runnable {
             chatLog.put(nickName + " disconnected from chat!", this);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ServerListener.removeClient(this);
         }
-        ServerListener.removeClient(this);
     }
 
     public void sendMessageToClient(String msg) throws IOException {
@@ -47,11 +58,6 @@ public class ClientHandler implements Runnable {
             out.newLine();
             out.flush();
         }
-    }
-
-    public ClientHandler(Socket clientSocket, ChatLog chatLog) {
-        this.clientSocket = clientSocket;
-        this.chatLog = chatLog;
     }
 
     @Override

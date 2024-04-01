@@ -16,11 +16,16 @@ public class ChatLog {
         pointer++;
     }
 
-    private void update(ClientHandler clientSender) throws IOException {
-        for (ClientHandler client : ServerListener.getClients()) {
-            if (client != clientSender)
-                client.sendMessageToClient(chatHistory.get(pointer));
-        }
+    private void update(ClientHandler clientSender) {
+        ServerListener.getClients().forEach(client -> {
+            if (client != clientSender) {
+                try {
+                    client.sendMessageToClient(chatHistory.get(pointer));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public ChatLog() {
