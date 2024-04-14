@@ -1,9 +1,9 @@
-package org.korolev_a_a.chat.client;
+package org.korolev_a_a.chat.client.threads;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-class ReadThread implements Runnable {
+public class ReadThread implements Runnable {
     private BufferedReader in;
 
     public ReadThread(BufferedReader in) {

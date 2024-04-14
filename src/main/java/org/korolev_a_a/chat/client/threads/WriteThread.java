@@ -1,11 +1,11 @@
-package org.korolev_a_a.chat.client;
+package org.korolev_a_a.chat.client.threads;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class WriteThread implements Runnable {
+public class WriteThread implements Runnable {
     private BufferedWriter out;
 
     public WriteThread(BufferedWriter out) {

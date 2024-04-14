@@ -1,5 +1,8 @@
 package org.korolev_a_a.chat.client;
 
+import org.korolev_a_a.chat.client.threads.ReadThread;
+import org.korolev_a_a.chat.client.threads.WriteThread;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;

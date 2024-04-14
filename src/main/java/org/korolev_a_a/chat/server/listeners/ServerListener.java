@@ -1,4 +1,7 @@
-package org.korolev_a_a.chat.server;
+package org.korolev_a_a.chat.server.listeners;
+
+import org.korolev_a_a.chat.server.ChatLog;
+import org.korolev_a_a.chat.server.handlers.ClientHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
